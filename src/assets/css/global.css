@@ -1,0 +1,59 @@
+html,
+body,
+#app {
+    height: 100%;
+    min-width: 750px;
+    margin: 0;
+    padding: 0;
+    background-color: #f5e8cb;
+    --themColor: #591804;
+}
+
+body,
+textarea,
+select,
+input,
+button {
+    font-family: Verdana, Tahoma, Arial, "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.w {
+    width: 100%;
+}
+
+.wx {
+    /* width: 9.807292rem; */
+    margin: 0 0.052083rem;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: 0;
+    outline: none;
+}
+
+.newBox {
+    border: 1px solid #cacaca;
+    box-shadow: 0 0 5px -3px #000;
+    border-radius: 2.5px;
+    padding: 1px;
+    margin: 7px 0;
+    background-color: #fff6df;
+}
