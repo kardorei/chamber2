@@ -1,0 +1,25 @@
+[{
+        "path": "wszt",
+        "bkName": "英雄联盟",
+        "bkIcon": "https://img4.nga.178.com/proxy/cache_attach/ficon/-152678u.png?391",
+        "bkDescription": "League Of Legends"
+    },
+    {
+        "path": "wszt",
+        "bkName": "无畏契约",
+        "bkIcon": "https://img4.nga.178.com/proxy/cache_attach/ficon/708u.png?394",
+        "bkDescription": "Valorant"
+    },
+    {
+        "path": "wszt",
+        "bkName": "LOL云顶之弈",
+        "bkIcon": "https://img4.nga.178.com/proxy/cache_attach/ficon/660u.png?015",
+        "bkDescription": "Teamfight Tactics"
+    },
+    {
+        "path": "wszt",
+        "bkName": "英雄联盟策略卡牌",
+        "bkIcon": "https://img4.nga.178.com/proxy/cache_attach/ficon/680u.png?727",
+        "bkDescription": "Legends of Runeterra"
+    }
+]
