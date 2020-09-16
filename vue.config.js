@@ -3,5 +3,5 @@ module.exports = {
         open: true,
         port: 9000
     },
-    publicPath: 'production' ? '/fm/' : '/'
+    publicPath: 'production' ? '/chamber2/' : '/'
 }

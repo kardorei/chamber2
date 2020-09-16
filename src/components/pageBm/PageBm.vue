@@ -237,7 +237,7 @@ export default {
 
 
         // 页面从顶部开始
-        window.parent.scrollTo(0, localStorage.getItem('pageY'))
+        window.parent.scrollTo(0, localStorage.getItem('pageY') ? localStorage.getItem('pageY') : 0)
 
     },
 
