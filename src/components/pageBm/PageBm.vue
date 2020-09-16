@@ -81,182 +81,33 @@
                             <!-- 表格主题 -->
                             <tr class="tabBofy">
                                 <td>
-                                    <span>
-                                        1. 杂谈区的管理主要依据用户的讨论态度，而非其观点，提倡讲道理，反对攻击性发言，一个用户的发言中对其他人
-                                        所体现的恶意越大，就可能受到越重的处罚；
-                                        <br><br>
-                                        2. 版主删帖/锁帖不接受任何投诉和质询，版主认为不适合讨论(争议太大/带敏感词/太三俗/有专门讨论的版面)的话题会被删除，
-                                        无需给出任何理由或解释，屡次发布版主不建议讨论的话题可能会受到处罚。不接受此项规定请不要发帖，发帖则视为认同。
+                                    <!-- 公共1 -->
+                                    <span v-html="ggOne.content">
+                                        <!-- 富文本内容 -->
                                     </span>
                                 </td>
                                 <td>
-                                    <p>
+                                    <!-- 公共2 -->
+                                    <p v-for="(item,index) in ggtwo" :key="index">
                                         <span class="kuohao">[</span>
-                                        <a href="javascript:;">最新: 贺情感专版“晴风村”开版，NGA首届三行情书原创大赛开始啦！</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">最新: 即日起网事杂谈区试运行新规则标准</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">重要：转帖需附原文链接，不得随意删改原文</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">《网络信息内容生态治理规定》</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">对于水区政治贴尺度变更的说明</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">手机客户端下载地址</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">移动客户端建议及BUG反馈帖</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">请谨慎对待论坛内的借贷关系</a>
+                                        <a href="javascript:;">{{item.content}}</a>
                                         <span class="kuohao">]</span>
                                     </p>
                                 </td>
                                 <td>
-                                    <p>
+                                    <!-- 公共3 -->
+                                    <p  v-for="(item,index) in ggThree" :key="index">
                                         <span class="kuohao">[</span>
-                                        <a href="javascript:;">[真的是钓鱼]钓鱼科普(路亚方向)</a>
+                                        <a href="javascript:;">{{item.content}}</a>
                                         <span class="kuohao">]</span>
                                     </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[真的是钓鱼]钓鱼科普(台钓方向)</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[原创刑侦故事]小城小案系列第一季</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[原创刑侦故事]小城小案系列第二季</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[原创刑侦故事]小城小案系列第三季</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">“传统文化”之龙岭迷窟电视剧中的悬魂梯</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">“传统文化”之奇门遁甲到底是啥</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">“传统文化”之《龙岭迷窟》里的术数“彩蛋”</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">“传统文化”之为什么十二生肖是这十二种动物？</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">三国历史冷知识</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[劣币驱逐良币]浅聊秦汉三国货币的变迁</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">黄钟毁弃，瓦釜雷鸣 | 一曲属于姜维的悲歌</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">《聊斋志异 ·公孙九娘》背后的故事</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
+                                    
                                 </td>
                                 <td>
-                                    <p>
+                                    <!-- 公共4 -->
+                                    <p v-for="(item,index) in ggFour" :key="index">
                                         <span class="kuohao">[</span>
-                                        <a href="javascript:;">我说来不及，你就不学了吗？</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[书法] 如何练字，扯扯我的一些观点。</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[书法] 分享练钢笔字一年的心得</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[一建考试] 从一建的卷子里薅最多的分！</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[公考] [申论] 来自91分大混子的真题实操</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[公考] [申论] 一篇不大靠谱的申论经验帖</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">住宅照明设计，初级，中级，教程</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">多图科普向长文：进化的奇迹——从细菌到人</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">中国文明起源的考古学科普</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">考古学证据为你还原中国古史传说时代</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">中国古典文化漫谈</a>
-                                        <span class="kuohao">]</span>
-                                    </p>
-                                    <p>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">[乱纷纷你方唱罢我登场] 简说五胡十六国</a>
+                                        <a href="javascript:;">{{item.content}}</a>
                                         <span class="kuohao">]</span>
                                     </p>
                                 </td>
@@ -265,105 +116,9 @@
                             <tr class="tabFoot">
                                 <td colspan="5">
                                     <span style="font-weight:bold">专栏作者: </span>
-                                    <span>
+                                    <span v-for="(item,index) in zhuanlan" :key="index">
                                         <span class="kuohao">[</span>
-                                        <a href="javascript:;">十二囧神</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">音乐茶话会</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">達爾文的旗幟</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">刘备字大爷</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">雷若阿</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">毒蛇KISS</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">面包店王二</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">slayershute</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">银翼的两仪之鸦</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">部落大酋长希尔瓦娜斯</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">烂耳朵拉轰</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">高科技</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">宁芙</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">申请通道</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">乌咪漫评</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">potato0124</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">银翼的两仪之鸦</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">lilac17</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">雪诺</a>
-                                        <span class="kuohao">]</span>
-                                    </span>
-
-                                    <span>
-                                        <span class="kuohao">[</span>
-                                        <a href="javascript:;">风紧扯呼</a>
+                                        <a href="javascript:;">{{item.content}}</a>
                                         <span class="kuohao">]</span>
                                     </span>
                                 </td>
@@ -428,6 +183,8 @@ import Pagination from '../pagination/Pagination'
 import Bg from '../bg/Bg'
 // 引入底部组件
 import Foot from '../foot/Foot'
+// 引入vuex
+import { mapState } from 'vuex'
 
 export default {
     components: {
@@ -435,6 +192,10 @@ export default {
         Pagination,
         Bg,
         Foot
+    },
+
+    computed: {
+        ...mapState(['pageY'])
     },
 
     data() {
@@ -452,7 +213,20 @@ export default {
             },
 
             // 帖子集合
-            articleList: []
+            articleList: [],
+
+            // 版头公共1-4
+            ggOne: {},
+            ggtwo: [],
+            ggThree: [],
+            ggFour: [],
+
+            // 专栏作者
+            zhuanlan: [],
+
+            // 头部高度
+            cPageY: 0
+
         }
     },
 
@@ -460,17 +234,41 @@ export default {
         // 获取到跳转页面传递过来的版面path值，会根据此值查询对应的版面内容
         let path = this.$route.query.path
         // console.log(path);
+
+
+        // 页面从顶部开始
+        window.parent.scrollTo(0, localStorage.getItem('pageY'))
+
     },
 
     mounted() {
+        // 获取帖子集合
         this.getArticleList()
+
+        // 获取版头公共1-4
+        this.getGonggao()
+        // 获取专栏作者
+        this.getZhuanlan()
+
+        // 监听页面回退事件，他会触发一个函数
+        if (window.history && window.history.pushState) {
+            history.pushState(null, null, document.URL);
+            window.addEventListener('popstate', this.goBack, false);
+        }
+
     },
 
     methods: {
+        // 回退事件触发的函数，此函数在生命周期方法中被监听
+        goBack() {
+            localStorage.setItem('pageY', 0)
+            this.$router.go(-1)
+        },
+
         // 点击分页栏后获取到修改后的当前页值
         getCPage(val) {
             this.pageObj.currentPage = val
-            console.log(this.pageObj.currentPage);
+            console.log('当前页：' + this.pageObj.currentPage);
         },
         
         // 获取当前版块的帖子集合(应根据传入id查询,这里是死数据)
@@ -480,6 +278,7 @@ export default {
             })
         },
 
+        // 跳转页面
         gotoArticle(id) {
             this.$router.push({
                 path: '/article',
@@ -487,6 +286,8 @@ export default {
                     id: id
                 }
             })
+            // 跳转帖子链接时，记录当前页面被卷去的头部距离并存储在本地中（返回上一页的时候要用到）
+            localStorage.setItem('pageY', window.pageYOffset)
         },
 
         // 把毫秒值时间转换为指定格式时间
@@ -511,8 +312,38 @@ export default {
             return `${month}-${day} ${hour}:${minutes}`
         },
 
+        // 获取版头公共1-4
+        getGonggao() {
+            for(let i = 1; i <= 4; i++) {
+                 this.$axios.get(`./bk/gonggao${i}.json`).then(({data}) => {
+                    if(i == 1) {
+                        this.ggOne = data
+                    } else if(i == 2) {
+                        this.ggtwo = data
+                    } else if(i == 3) {
+                        this.ggThree = data
+                    } else {
+                        this.ggFour = data
+                    }
+                })
+            }
+        },
+
+        // 获取专栏作者
+        getZhuanlan() {
+            this.$axios.get('./bk/zhuanlan.json').then(({data}) => {
+                this.zhuanlan = data
+            })
+        }
+
         //
     },
+
+    
+    destroyed(){
+        // 当页面销毁的时候，销毁指定的函数
+        window.removeEventListener('popstate', this.goBack, false);
+    }
 
 }
 </script>

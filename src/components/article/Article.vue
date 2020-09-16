@@ -241,12 +241,16 @@ export default {
     created() {
         let id = this.$route.query.id
         this.articleId = id
-        console.log(this.articleId);
+        console.log('当前帖子ID:' + this.articleId);
 
-        this.getMainFloor2()
-        this.getArticleReplayList2()
+        this.getMainFloor()
+        this.getArticleReplayList()
+
+        // 页面从顶部开始
+        window.parent.scrollTo(0, 0)
+        
     },
-   
+
     methods: {
         // 点击分页栏后获取到修改后的当前页值
         getCPage(val) {
@@ -254,7 +258,7 @@ export default {
             console.log(this.pageObj.currentPage);
         },
 
-        getMainFloor2() {
+        getMainFloor() {
             let path = ''
             if(this.articleId == 1) {
                 path = './article/main.json'
@@ -263,11 +267,10 @@ export default {
             }
             this.$axios.get(path).then(({data}) => {
                 this.mainFloor = data
-                console.log(this.mainFloor);
             })
         },
 
-        getArticleReplayList2() {
+        getArticleReplayList() {
             let path = ''
             if(this.articleId == 1) {
                 path = './article/replay.json'
