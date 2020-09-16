@@ -306,6 +306,18 @@ a {
     color: var(--themColor);
 }
 
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .pagination {
+        height: 0.625rem!important;
+        a {
+            padding: 0 0.260417rem!important;
+            line-height: 0.625rem;
+            font-size: 0.260417rem!important;
+        }
+    }
+}
+
 table {
     border-collapse: collapse;
 }

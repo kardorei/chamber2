@@ -21,8 +21,8 @@
         </div>
 
         <!-- 广告组件 -->
-        <Bg srcPath="https://pic.downk.cc/item/5f56fea1160a154a678d79e1.gif"></Bg>
-
+        <Bg srcPath="https://pic.downk.cc/item/5f56fea1160a154a678d79e1.gif" class="bgh"></Bg>
+        
         <!-- 版面内容 -->
         <div class="wx main">
             <!-- 版面左侧 -->
@@ -129,7 +129,7 @@
         </div>
 
         <!-- 底部广告组件 -->
-        <Bg srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
+        <Bg class="bgh" srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
 
         <!-- 底部组件 -->
         <Foot></Foot>
@@ -264,6 +264,7 @@ export default {
                 bmIMG.setAttribute(vueScopedStyleAttr,'')
                 bmIMG.classList.add('bmIMG')
                 let img = document.createElement('img')
+                img.setAttribute(vueScopedStyleAttr,'')
                 img.src = k.bkIcon
                 bmIMG.appendChild(img)
 
@@ -322,6 +323,7 @@ export default {
                 bmIMG.setAttribute(vueScopedStyleAttr,'')
                 bmIMG.classList.add('bmIMG')
                 let img = document.createElement('img')
+                img.setAttribute(vueScopedStyleAttr,'')
                 img.src = k.bkIcon
                 bmIMG.appendChild(img)
 
@@ -432,6 +434,74 @@ a:hover {
     color: #b87563!important;
 }
 
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .wx {
+        width: 9.807292rem!important;
+    }
+    .index_title {
+        .BN {
+            width: 0.833333rem!important;
+            text-align: center;
+            float: none;
+            font-size: 0.234375rem!important;
+            padding: 13px 0.052083rem!important;
+            margin-bottom: 0.078125rem;
+        }
+        .gongGao {
+            float: none;
+            font-size: 0.234375rem!important;
+            padding: 13px 8px;
+            border: 1px solid #fffcee;
+        }
+        .tongji {
+            display: none;
+        }
+    }
+
+    .bgh {
+        display: none;
+    }
+
+    .mianBox {
+        width: 100%!important;
+        float: none;
+    }
+
+    h2 {
+        font-size: 0.260417rem!important;
+    }
+
+    .contentBox3 {
+        .outDiv {
+            height: 0.677083rem!important;
+            a {
+                font-size: 0.15625rem!important;
+            }
+            span {
+                font-size: 0.078125rem!important;
+            }
+            .bmIMG {
+                width: 20%;
+            }
+        }
+    }
+    .contentBox4 {
+        .outDiv4 {
+            height: 0.677083rem!important;
+            a {
+                font-size: 0.15625rem!important;
+            }
+            span {
+                font-size: 0.078125rem!important;
+            }
+            .bmIMG {
+                width: 20%;
+            }
+        }
+    }
+}
+
 .index_title {
     width: 100%;
     height: 50px;
@@ -461,6 +531,7 @@ a:hover {
     }
 }
 
+
 h2 {
     margin: 3px 0;
     font-size: 23px;
@@ -484,6 +555,10 @@ h2 {
             float: left;
             display: flex;
             align-items: center;
+            img {
+                // display: none;
+                width: 100%;
+            }
         }
         .bgName_description {
             float: left;
@@ -533,6 +608,9 @@ h2 {
             float: left;
             display: flex;
             align-items: center;
+            img {
+                width: 100%;
+            }
         }
         .bgName_description {
             float: left;

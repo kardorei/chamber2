@@ -13,7 +13,7 @@
                         <a href="javascript:;">大 漩 涡</a>
                     </div>
                     <div class="articleName fl">
-                        <a href="javascript:;">{{articleTitle}}</a>
+                        <a href="javascript:;">{{mainFloor.title}}</a>
                     </div>
                 </div>
 
@@ -36,6 +36,50 @@
                 <table>
                     <tbody>
                         <tr>
+                            <td>
+                                <span>
+                                    <div class="userInfo">
+                                        <a href="javascript:;">{{mainFloor.userInfo.name}}</a>
+                                        <span>{{mainFloor.userInfo.id}}</span>
+                                    </div>
+                                </span>
+                                <img :src="mainFloor.userInfo.headPhoto" class="hp">
+                                <div class="userLv">
+                                    <div>级别：<p>{{mainFloor.userInfo.level}}</p></div>
+                                    <div>声望：<p>{{mainFloor.userInfo.shengwang}}</p></div>
+                                    <div>注册：<p>{{mainFloor.userInfo.registerTime}}</p></div>
+                                    <div>威望：<p>{{mainFloor.userInfo.weiwang}}</p></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contetntZan">
+                                    <span class="zan">
+                                        <a href="javascript:;" class="iconfont icon-zan"></a>
+                                        <span>{{mainFloor.zan}}</span>
+                                        <a href="javascript:;" class="iconfont icon-cai"></a>
+                                    </span>
+                                    <span class="contentTitle">
+                                        <h3>{{mainFloor.title}}</h3>
+                                    </span>
+                                    <span class="fr time_tool">
+                                        <span>{{mainFloor.time}}</span>
+                                        <a href="javascript:;" class="iconfont icon-star_full"></a>
+                                        <a href="javascript:;" class="iconfont icon-chilun"></a>
+                                    </span>
+                                </div>
+                                <div class="articleContent" v-html="mainFloor.content">
+                                    <!-- 主题内容 -->
+                                </div>
+                                <div class="editTime" v-if="mainFloor.editTime !== ''">
+                                    <h4>改动</h4>
+                                    <span>{{mainFloor.editTime}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="javascript:;">
+                                    <img src="https://ad-static-xg.tagtic.cn/ad-material/images/dzfOdJlchfsJqTsXLF5vgVC07JiAW1HHRXfd3mHk.png">
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -43,13 +87,55 @@
         </div>
 
         <!-- 广告组件 -->
-        <Bg srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
+        <Bg class="bgh" srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
         
         <!-- 帖子的回复列表 -->
         <div class="wx">
             <div class="replay">
                 <table>
                     <tbody>
+                        <tr :class="index % 2 == 0 ? 'oddTr' : ''" v-for="(obj,index) in replayList" :key="index">
+                            <td>
+                                <span>
+                                    <div class="userInfo">
+                                        <a href="javascript:;">{{obj.userInfo.name}}</a>
+                                        <span>{{obj.userInfo.id}}</span>
+                                        <p> 
+                                            <!-- 当前回复的楼层 = (当前页 - 1)*20 + 遍历的index值 + 1。20为每页显示数,index是从0开始所以加1 -->
+                                            #{{(pageObj.currentPage - 1) * pageObj.pageNum + (index + 1)}}
+                                        </p>
+                                    </div>
+                                </span>
+                                <img :src="obj.userInfo.headPhoto" class="hp">
+                                <div class="userLv">
+                                    <div>级别：<p>{{obj.userInfo.level}}</p></div>
+                                    <div>声望：<p>{{obj.userInfo.shengwang}}</p></div>
+                                    <div>注册：<p>{{obj.userInfo.registerTime | formatDate('yyyy-MM-dd')}}</p></div>
+                                    <div>威望：<p>{{obj.userInfo.weiwang}}</p></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contetntZan">
+                                    <span class="zan">
+                                        <a href="javascript:;" class="iconfont icon-zan"></a>
+                                        <span>{{obj.zan}}</span>
+                                        <a href="javascript:;" class="iconfont icon-cai"></a>
+                                    </span>
+                                    <span class="fr time_tool">
+                                        <span>{{obj.time | formatDate('yyyy-MM-dd hh:mm:ss')}}</span>
+                                        <a href="javascript:;" class="iconfont icon-star_full"></a>
+                                        <a href="javascript:;" class="iconfont icon-chilun"></a>
+                                    </span>
+                                </div>
+                                <div class="articleContent" v-html="obj.content">
+                                    <!-- 回复内容 -->
+                                </div>
+                                <div class="editTime" v-if="obj.editTime !== ''">
+                                    <h4>改动</h4>
+                                    <span>{{obj.editTime | formatDate('yyyy-MM-dd hh:mm:ss')}}</span>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -75,7 +161,7 @@
         </div>
 
         <!-- 广告组件 -->
-        <Bg srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/nppVPkmltwYVYUGhkyEb5C7Xbg3d7a1lAeU4FEQV.gif"></Bg>
+        <Bg class="bgh" srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/nppVPkmltwYVYUGhkyEb5C7Xbg3d7a1lAeU4FEQV.gif"></Bg>
 
         <div class="wx fatieTitleH2">
             <h2>..:: 快速发帖 ::..</h2>
@@ -134,18 +220,33 @@ export default {
                 currentPage: 1,
                 pageNum: 20,
                 totalCount: 700
-            }
+            },
+
+            // 主楼内容
+            mainFloor: {
+                userInfo: {
+                    id: '',
+                    name: '',
+                    headPhoto: '',
+                    registerTime: '',
+                    shengwang: '',
+                    weiwang: '',
+                    level: ''
+                }
+            },
+            // 回复列表
+            replayList: []
         }
     },
     created() {
         let id = this.$route.query.id
         this.articleId = id
         console.log(this.articleId);
+
+        this.getMainFloor2()
+        this.getArticleReplayList2()
     },
-    mounted() {
-        this.getMainFloor()
-        this.getArticleReplayList()
-    },
+   
     methods: {
         // 点击分页栏后获取到修改后的当前页值
         getCPage(val) {
@@ -153,32 +254,20 @@ export default {
             console.log(this.pageObj.currentPage);
         },
 
-        // 获取主楼内容并渲染
-        getMainFloor() {
-            let tr = document.querySelector('.mainFloor').querySelector('tr')
-            const vueScopedStyleAttr = tr.attributes[0].name
-
+        getMainFloor2() {
             let path = ''
             if(this.articleId == 1) {
                 path = './article/main.json'
             } else {
                 path = './article/main2.json'
             }
-
             this.$axios.get(path).then(({data}) => {
-                // 先给标题赋值
-                this.articleTitle = data.title
-                tr.appendChild(this.setMainFloorL(data,vueScopedStyleAttr))
-                tr.appendChild(this.setMainFloorM(data,vueScopedStyleAttr))
-                tr.appendChild(this.setMainFloorR(data,vueScopedStyleAttr))
+                this.mainFloor = data
+                console.log(this.mainFloor);
             })
         },
 
-        // 获取回复内容并渲染
-        getArticleReplayList() {
-            let tbody = document.querySelector('.replay').querySelector('tbody')
-            const vueScopedStyleAttr = tbody.attributes[0].name
-
+        getArticleReplayList2() {
             let path = ''
             if(this.articleId == 1) {
                 path = './article/replay.json'
@@ -187,437 +276,94 @@ export default {
             }
 
             this.$axios.get(path).then(({data}) => {
-                data.forEach((obj, index) => {
-                    let tr = document.createElement('tr')
-                    tr.setAttribute(vueScopedStyleAttr, '')
-                    if(index % 2 == 0) {
-                        tr.classList.add('oddTr')
-                    }
-
-                    tr.appendChild(this.setReplayFloorL(obj,vueScopedStyleAttr,index))
-                    tr.appendChild(this.setReplayFloorR(obj,vueScopedStyleAttr))
-                    tbody.appendChild(tr)
-                })
+                this.replayList = data
             })
         },
 
-        // 设置回复楼层的左侧样式
-        setReplayFloorL(data, vueScopedStyleAttr, index) {
-            let td = document.createElement('td')
-            td.setAttribute(vueScopedStyleAttr,'')
-
-            // 1、外层span
-            let span = document.createElement('span')
-            span.setAttribute(vueScopedStyleAttr,'')
-
-            // 2、第一个div
-            let div1 = document.createElement('div')
-            div1.setAttribute(vueScopedStyleAttr,'')
-            div1.classList.add('userInfo')
-
-            let a = document.createElement('a')
-            a.setAttribute(vueScopedStyleAttr,'')
-            a.href = 'javascript:;'
-            a.textContent = data.userInfo.name
-
-            let span2 = document.createElement('span')
-            span2.setAttribute(vueScopedStyleAttr,'')
-            span2.textContent = data.userInfo.id
-
-            let p = document.createElement('p')
-            p.setAttribute(vueScopedStyleAttr,'')
-            // 当前回复的楼层 = (当前页 - 1)*20 + 遍历的index值 + 1。20为每页显示数,index是从0开始所以加1
-            let floor = (this.pageObj.currentPage - 1) * this.pageObj.pageNum + (index + 1)
-            p.textContent = '#' + floor
-
-            div1.appendChild(a)
-            div1.appendChild(span2)
-            div1.appendChild(p)
-
-            // 3、第二个div
-            let div2 = document.createElement('div')
-            div2.setAttribute(vueScopedStyleAttr,'')
-            div2.classList.add('userLv')
-            for(let i = 1; i <= 4; i++) {
-                let div = document.createElement('div')
-                div.setAttribute(vueScopedStyleAttr,'')
-                let p = document.createElement('p')
-                p.setAttribute(vueScopedStyleAttr,'')
-                if(i == 1) {
-                    div.textContent = '级别：'
-                    p.textContent = data.userInfo.level
-                } else if(i == 2) {
-                    div.textContent = '声望：'
-                    p.textContent = data.userInfo.shengwang
-                } else if(i == 3) {
-                    div.textContent = '注册：'
-                    p.textContent = this.getTime2(data.userInfo.registerTime - 0) 
-                } else {
-                    div.textContent = '威望：'
-                    p.textContent = data.userInfo.weiwang
-                }
-                div.appendChild(p)
-                div2.appendChild(div)
-            }
-
-            span.appendChild(div1)
-            // 4、img标签，先判断用户是否上传了图像
-            if(data.userInfo.headPhoto.trim() != '') {
-                let img = document.createElement('img')
-                img.setAttribute(vueScopedStyleAttr,'')
-                img.src = data.userInfo.headPhoto
-                img.classList.add('hp')
-                span.appendChild(img)
-            }
-            span.appendChild(div2)
-
-            // 5、最后把td返回
-            td.appendChild(span)
-            return td
-        },
-
-        // 
-        setReplayFloorR(data, vueScopedStyleAttr) {
-            // 1、创建最外层的td
-            let td = document.createElement('td')
-            td.setAttribute(vueScopedStyleAttr,'')
-
-            // 2、td中有三个大div
-            // 帖子如果有改动是三个div，否则是两个
-            let lenght = 2
-            if(data.editTime.trim() != '') {
-                lenght = 3
-            }
-
-            for(let i = 1; i <= lenght; i++) {
-                let div = document.createElement('div')
-                div.setAttribute(vueScopedStyleAttr,'')
-
-                if(i == 1) {
-                    // 3、div1
-                    div.classList.add('contetntZan')
-
-                    // 3.1、div1中包含二个span
-                    for(let i = 1; i <= 2; i++) {
-                        let span = document.createElement('span')
-                        span.setAttribute(vueScopedStyleAttr,'')
-                        if(i == 1) {
-                            span.classList.add('zan')
-
-                            let a1 = document.createElement('a')
-                            a1.setAttribute(vueScopedStyleAttr,'')
-                            a1.href = 'javascript:;'
-                            a1.classList.add('iconfont')
-                            a1.classList.add('icon-zan')
-                            let a2 = document.createElement('a')
-                            a2.setAttribute(vueScopedStyleAttr,'')
-                            a2.href = 'javascript:;'
-                            a2.classList.add('iconfont')
-                            a2.classList.add('icon-cai')
-                            let span2 = document.createElement('span')
-                            span2.setAttribute(vueScopedStyleAttr,'')
-                            span2.textContent = data.zan
-
-                            span.appendChild(a1)
-                            span.appendChild(span2)
-                            span.appendChild(a2)
-                        } else {
-                            span.classList.add('fr')
-                            span.classList.add('time_tool')
-
-                            let a1 = document.createElement('a')
-                            a1.setAttribute(vueScopedStyleAttr,'')
-                            a1.href = 'javascript:;'
-                            a1.classList.add('iconfont')
-                            a1.classList.add('icon-star_full')
-                            let a2 = document.createElement('a')
-                            a2.setAttribute(vueScopedStyleAttr,'')
-                            a2.href = 'javascript:;'
-                            a2.classList.add('iconfont')
-                            a2.classList.add('icon-chilun')
-                            let innerspan = document.createElement('span')
-                            innerspan.setAttribute(vueScopedStyleAttr,'')
-                            innerspan.textContent = this.getTime(data.time - 0)
-
-                            span.appendChild(innerspan)
-                            span.appendChild(a1)
-                            span.appendChild(a2)
-                        }
-                        div.appendChild(span)
-                    }
-                } else if(i == 2) {
-                    // 4、div2
-                    div.classList.add('articleContent')
-                    div.innerHTML = data.content
-                } else {
-                    // 如果帖子被修改过才会有此元素
-                    if(data.editTime.trim() != '') {
-                        // 5、div3
-                        div.classList.add('editTime')
-
-                        let h4 = document.createElement('h4')
-                        h4.setAttribute(vueScopedStyleAttr,'')
-                        h4.textContent = '改动'
-
-                        let span = document.createElement('span')
-                        span.setAttribute(vueScopedStyleAttr,'')
-                        span.textContent = this.getTime(data.editTime - 0)
-
-                        div.appendChild(h4)
-                        div.appendChild(span)
-                    }
-                    
-                }
-                // 6、把每个div放入td中
-                td.appendChild(div)
-            }
-
-            return td
-        },
-
-        // 把毫秒值时间转换为指定格式时间
-        getTime(time) {
-            const dt = new Date(time)
-
-            const year = dt.getFullYear()
-
-            // 先把月份转换为字符串，然后使用padStart方法 
-            // 2表示字符串要满足2个，
-            // '0'表示不满足2个的前面用'0'代替
-            const month = (dt.getMonth() + 1 + '').padStart(2, '0')
-
-            const day = (dt.getDate() + '').padStart(2, '0')
-
-            const hour = (dt.getHours() + '').padStart(2, '0')
-            const minutes = (dt.getMinutes() + '').padStart(2, '0')
-            const seconds = (dt.getSeconds() + '').padStart(2, '0')
-
-            // 返回拼接的值
-            // return `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`
-            return `${year}-${month}-${day} ${hour}:${minutes}`
-        },
-
-        // 把毫秒值时间转换为指定格式时间(年月日)
-        getTime2(time) {
-            const dt = new Date(time)
-
-            const year = dt.getFullYear()
-
-            // 先把月份转换为字符串，然后使用padStart方法 
-            // 2表示字符串要满足2个，
-            // '0'表示不满足2个的前面用'0'代替
-            const month = (dt.getMonth() + 1 + '').padStart(2, '0')
-
-            const day = (dt.getDate() + '').padStart(2, '0')
-
-            const hour = (dt.getHours() + '').padStart(2, '0')
-            const minutes = (dt.getMinutes() + '').padStart(2, '0')
-            const seconds = (dt.getSeconds() + '').padStart(2, '0')
-
-            // 返回拼接的值
-            return `${year}-${month}-${day}`
-        },
-
-        // 主楼的左侧样式
-        setMainFloorL(data,vueScopedStyleAttr) {
-            let td = document.createElement('td')
-            td.setAttribute(vueScopedStyleAttr,'')
-
-            // 1、外层span
-            let span = document.createElement('span')
-            span.setAttribute(vueScopedStyleAttr,'')
-
-            // 2、第一个div
-            let div1 = document.createElement('div')
-            div1.setAttribute(vueScopedStyleAttr,'')
-            div1.classList.add('userInfo')
-
-            let a = document.createElement('a')
-            a.setAttribute(vueScopedStyleAttr,'')
-            a.href = 'javascript:;'
-            a.textContent = data.userInfo.name
-
-            let span2 = document.createElement('span')
-            span2.setAttribute(vueScopedStyleAttr,'')
-            span2.textContent = data.userInfo.id
-
-            div1.appendChild(a)
-            div1.appendChild(span2)
-
-            // 3、第二个div
-            let div2 = document.createElement('div')
-            div2.setAttribute(vueScopedStyleAttr,'')
-            div2.classList.add('userLv')
-            for(let i = 1; i <= 4; i++) {
-                let div = document.createElement('div')
-                div.setAttribute(vueScopedStyleAttr,'')
-                let p = document.createElement('p')
-                p.setAttribute(vueScopedStyleAttr,'')
-                if(i == 1) {
-                    div.textContent = '级别：'
-                    p.textContent = data.userInfo.level
-                } else if(i == 2) {
-                    div.textContent = '声望：'
-                    p.textContent = data.userInfo.shengwang
-                } else if(i == 3) {
-                    div.textContent = '注册：'
-                    p.textContent = this.getTime2(data.userInfo.registerTime - 0) 
-                } else {
-                    div.textContent = '威望：'
-                    p.textContent = data.userInfo.weiwang
-                }
-                div.appendChild(p)
-                div2.appendChild(div)
-            }
-
-            span.appendChild(div1)
-            // 4、img标签，先判断用户是否上传了图像
-            if(data.userInfo.headPhoto.trim() != '') {
-                let img = document.createElement('img')
-                img.setAttribute(vueScopedStyleAttr,'')
-                img.src = data.userInfo.headPhoto
-                img.classList.add('hp')
-                span.appendChild(img)
-            }
-            span.appendChild(div2)
-
-            // 5、最后把td返回
-            td.appendChild(span)
-            return td
-        },
-
-        // 主楼的中间样式
-        setMainFloorM(data,vueScopedStyleAttr) {
-            // 1、创建最外层的td
-            let td = document.createElement('td')
-            td.setAttribute(vueScopedStyleAttr,'')
-
-            // 2、td中有三个大div
-            // 帖子如果有改动是三个div，否则是两个
-            let lenght = 2
-            if(data.editTime.trim() != '') {
-                lenght = 3
-            }
-
-            for(let i = 1; i <= lenght; i++) {
-                let div = document.createElement('div')
-                div.setAttribute(vueScopedStyleAttr,'')
-
-                if(i == 1) {
-                    // 3、div1
-                    div.classList.add('contetntZan')
-
-                    // 3.1、div1中包含三个span
-                    for(let i = 1; i <= 3; i++) {
-                        let span = document.createElement('span')
-                        span.setAttribute(vueScopedStyleAttr,'')
-                        if(i == 1) {
-                            span.classList.add('zan')
-
-                            let a1 = document.createElement('a')
-                            a1.setAttribute(vueScopedStyleAttr,'')
-                            a1.href = 'javascript:;'
-                            a1.classList.add('iconfont')
-                            a1.classList.add('icon-zan')
-                            let a2 = document.createElement('a')
-                            a2.setAttribute(vueScopedStyleAttr,'')
-                            a2.href = 'javascript:;'
-                            a2.classList.add('iconfont')
-                            a2.classList.add('icon-cai')
-                            let span2 = document.createElement('span')
-                            span2.setAttribute(vueScopedStyleAttr,'')
-                            span2.textContent = data.zan
-
-                            span.appendChild(a1)
-                            span.appendChild(span2)
-                            span.appendChild(a2)
-                        } else if(i == 2) {
-                            span.classList.add('contentTitle')
-
-                            let h3 = document.createElement('h3')
-                            h3.setAttribute(vueScopedStyleAttr,'')
-                            h3.textContent = data.title
-                            span.appendChild(h3)
-                        } else {
-                            span.classList.add('fr')
-                            span.classList.add('time_tool')
-
-                            let a1 = document.createElement('a')
-                            a1.setAttribute(vueScopedStyleAttr,'')
-                            a1.href = 'javascript:;'
-                            a1.classList.add('iconfont')
-                            a1.classList.add('icon-star_full')
-                            let a2 = document.createElement('a')
-                            a2.setAttribute(vueScopedStyleAttr,'')
-                            a2.href = 'javascript:;'
-                            a2.classList.add('iconfont')
-                            a2.classList.add('icon-chilun')
-                            let innerspan = document.createElement('span')
-                            innerspan.setAttribute(vueScopedStyleAttr,'')
-                            innerspan.textContent = this.getTime(data.time - 0)
-
-                            span.appendChild(innerspan)
-                            span.appendChild(a1)
-                            span.appendChild(a2)
-                        }
-                        div.appendChild(span)
-                    }
-                } else if(i == 2) {
-                    // 4、div2
-                    div.classList.add('articleContent')
-                    div.innerHTML = data.content
-                } else {
-                    // 如果帖子被修改过才会有此元素
-                    if(data.editTime.trim() != '') {
-                        // 5、div3
-                        div.classList.add('editTime')
-
-                        let h4 = document.createElement('h4')
-                        h4.setAttribute(vueScopedStyleAttr,'')
-                        h4.textContent = '改动'
-
-                        let span = document.createElement('span')
-                        span.setAttribute(vueScopedStyleAttr,'')
-                        span.textContent = this.getTime(data.editTime - 0)
-
-                        div.appendChild(h4)
-                        div.appendChild(span)
-                    }
-                    
-                }
-                // 6、把每个div放入td中
-                td.appendChild(div)
-            }
-
-            return td
-        },
-
-        // 主楼的右侧样式，功能为渲染主楼右侧的广告
-        setMainFloorR(data,vueScopedStyleAttr) {
-            // 1、创建最外层的td
-            let td = document.createElement('td')
-            td.setAttribute(vueScopedStyleAttr,'')
-
-            let a = document.createElement('a')
-            a.setAttribute(vueScopedStyleAttr,'')
-            a.href = 'javascript:;'
-
-            let img = document.createElement('img')
-            img.setAttribute(vueScopedStyleAttr,'')
-            img.src = 'https://ad-static-xg.tagtic.cn/ad-material/images/dzfOdJlchfsJqTsXLF5vgVC07JiAW1HHRXfd3mHk.png'
-
-            a.appendChild(img)
-            td.appendChild(a)
-
-            return td
-        },
-
-        //
     }
 }
 </script>
 
 <style lang="less" scoped>
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .articleTitle {
+        height: 0.572917rem!important;
+        .BN,
+        .bmName,
+        .tool {
+            display: none;
+        }
+        .articleName {
+            font-size: 0.208333rem!important;
+            padding: 0.125rem 0.052083rem!important;
+        }
+    }
+
+    .bgh {
+        display: none;
+    }
+
+    .mainFloor {
+        img {
+            display: none;
+        }
+        tr {
+            display: flex;
+            flex-direction: column;
+            td:last-child {
+                display: none;
+            }
+            td {
+                width: 100%!important;
+                flex: 1;
+            }
+        }
+        .contentTitle {
+            h3 {
+                display: none;
+            }
+        }
+    }
+
+    .replay {
+        img {
+            display: none;
+        }
+        tr {
+            display: flex;
+            flex-direction: column;
+            td {
+                width: 100%!important;
+                flex: 1;
+            }
+        }
+    }
+
+    .tool {
+        a {
+            height: 0.625rem!important;
+            padding: 0 0.15625rem!important;
+            line-height: 0.625rem!important;
+            font-size: 0.260417rem!important;
+        }
+    }
+
+    .replayBox {
+        .replayBoxR {
+            display: none;
+        }
+
+        .sendReplay {
+            width: 30%!important;
+            text-align: center;
+            padding: 0.15625rem 0.104167rem!important;
+            margin: 20px 0 0 47%;
+            font-size: 0.15625rem!important;
+        }
+    }
+}
+
 .articleTitle {
     height: 50px;
     margin: 8px 0;

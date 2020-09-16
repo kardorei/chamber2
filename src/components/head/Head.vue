@@ -1,7 +1,7 @@
 <template>
     <div class="w bgc">
         <div class="wx">
-            <div class="fl">
+            <div class="fl bgcL">
                 <div class="logo fl">
                     <img src="../../assets/pic/logo/logo.jpg" alt="">
                 </div>
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="fr">
+            <div class="fr bgcR">
                 <div class="fl">
                     <a href="javascript:;" class="user a_mask" @click.stop="showUserBG">
                         <span>你好</span>
@@ -179,6 +179,79 @@ export default {
 .bgc {
     height: 55px;
     background-color: #fff0cd;
+}
+
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .bgc {
+        // height: 0.572917rem!important;
+        height: 0.78125rem!important;
+    }
+    .bgcL {
+        display: none;
+    }
+    .search {
+        display: none!important;
+    }
+    .user {
+        flex-direction: row!important;
+        // height: 0.572917rem!important;
+        height: 0.78125rem!important;
+        padding: 0 0.260417rem!important;
+        span {
+            font-size:  0.260417rem!important;
+            white-space: nowrap;
+            margin-left: 5px;
+        }
+    }
+    a {
+        // height: 0.572917rem!important;
+        height: 0.78125rem!important;
+        line-height: 0.78125rem!important;
+        padding: 0 0.78125rem!important;
+        font-size: 0.260417rem!important;
+        align-items: center!important;
+    }
+
+    .userBG {
+        width: 5rem!important;
+        .userBG_body {
+            .bodyL {
+                padding: 0.109375rem 0.078125rem 0 0.109375rem;
+            }
+            a {
+                padding: 0.09375rem!important;
+                padding-bottom: 0!important;
+                font-size: 0.25rem!important;
+            }
+            .bodyR {
+                width: 3.927083rem!important;
+                padding-top: 0.114583rem!important;
+            ul {
+                padding-left: 0.114583rem!important;
+                padding-top: 0.052083rem!important;
+                margin-bottom: 0.114583rem!important;
+                // min-height: 150px;
+                border-left: 0.016146rem solid #ccc!important;
+                    a {
+                        padding-bottom: 0!important;
+                    }
+                }
+            }
+            .aline {
+                border: 0!important;
+            }
+            
+        }
+        .userBG_foot {
+            .foot_name {
+                font-size: 0.520833rem!important;
+            }
+            .foot_id {
+                font-size: 0.104167rem!important;
+            }
+        }
+    }
 }
 
 .logo {

@@ -375,7 +375,7 @@
         </div>
 
         <!-- 广告组件 -->
-        <Bg srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
+        <Bg class="bgh" srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
 
         <!-- 帖子列表 -->
         <div class="wx">
@@ -383,36 +383,21 @@
                 <div class="bmBody">
                     <table>
                         <tbody>
-                            <!-- <tr class="evenTr">
-                                <td>1</td>
+                           <tr :class="index % 2 == 0 ? 'evenTr' : 'oddTr'" v-for="(obj,index) in articleList" :key="index">
+                                <td>{{obj.replayCount}}</td>
                                 <td>
-                                    <a href="javascript:;">1123123231</a>
+                                    <a href="javascript:;" @click.stop="gotoArticle(obj.id)">{{obj.articleTitle}}</a>
                                     <span>•</span>
                                 </td>
                                 <td>
-                                    <p class="username">二狗</p>
-                                    <p class="time">123</p>
+                                    <p class="username">{{obj.auther}}</p>
+                                    <p class="time">{{obj.time  | formatDate('yyyy-MM-dd hh:mm')}}</p>
                                 </td>
                                 <td>
-                                    <p class="replayTime">123</p>
-                                    <p class="replayName">二狗</p>
+                                    <p class="replayTime">{{obj.lsatReplayTime  | formatDate('yyyy-MM-dd hh:mm')}}</p>
+                                    <p class="replayName">{{obj.lastReplayUser}}</p>
                                 </td>
                             </tr>
-                             <tr class="oddTr">
-                                <td>1</td>
-                                <td>
-                                    <a href="javascript:;">1123123231</a>
-                                    <span>•</span>
-                                </td>
-                                <td>
-                                    <p class="username">二狗</p>
-                                    <p class="time">123</p>
-                                </td>
-                                <td>
-                                    <p class="replayTime">123</p>
-                                    <p class="replayName">二狗</p>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -427,7 +412,7 @@
         </div>
 
         <!-- 广告组件 -->
-        <Bg srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
+        <Bg class="bgh" srcPath="https://ad-static-xg.tagtic.cn/ad-material/images/QwsPMo81y0WFODUHlDyaaNgQi8zBFvGaEmai0uO9.jpeg"></Bg>
 
         <!-- 底部组件 -->
         <Foot></Foot>
@@ -464,7 +449,10 @@ export default {
                 pageNum: 37,
                 totalCount: 700
                 // totalCount: 230
-            }
+            },
+
+            // 帖子集合
+            articleList: []
         }
     },
 
@@ -484,90 +472,20 @@ export default {
             this.pageObj.currentPage = val
             console.log(this.pageObj.currentPage);
         },
-
+        
         // 获取当前版块的帖子集合(应根据传入id查询,这里是死数据)
         getArticleList() {
-            // 1 获取外层容器
-            let tbody = document.querySelector('.bmBody').querySelector('tbody')
-            const vueScopedStyleAttr = tbody.attributes[0].name
-
             this.$axios.get('./tz/wszt.json').then(({data}) => {
-                data.forEach((k, i) => {
-                    // 2 创建每一行的tr
-                    let tr = document.createElement('tr')
-                    tr.setAttribute(vueScopedStyleAttr, '')
-                    if(i % 2 == 0) {
-                        tr.classList.add('evenTr')
-                    } else {
-                        tr.classList.add('oddTr')
-                    }
+                this.articleList = data
+            })
+        },
 
-                    // 3 tr中包含4个td
-                    for(let i = 1; i <= 4; i++) {
-                        // 3.1 公共td 供条件选择修改后最终放入tr中
-                        let td = document.createElement('td')
-                        td.setAttribute(vueScopedStyleAttr, '')
-
-                        // 3.2 4个td设置不同的内容
-                        if(i == 1) {
-                            td.textContent = k.replayCount
-                        }
-                        if(i == 2) {
-                            let a = document.createElement('a')
-                            a.setAttribute(vueScopedStyleAttr, '')
-                            a.href = 'javascript:;'
-                            a.textContent = k.articleTitle
-                            a.addEventListener('click', e => {
-                                e.stopPropagation()
-                                this.$router.push({
-                                    path: '/article',
-                                    query: {
-                                        id: k.id
-                                    }
-                                })
-                            })
-
-                            let span = document.createElement('span')
-                            span.setAttribute(vueScopedStyleAttr, '')
-                            span.textContent = '•'
-
-                            td.appendChild(a)
-                            td.appendChild(span)
-                        }
-                        if(i == 3) {
-                            let p1 = document.createElement('p')
-                            let p2 = document.createElement('p')
-                            p1.setAttribute(vueScopedStyleAttr, '')
-                            p2.setAttribute(vueScopedStyleAttr, '')
-                            p1.classList.add('username')
-                            p2.classList.add('time')
-                            p1.textContent = k.auther
-                            p2.textContent = this.getTime(k.time)
-
-                            td.appendChild(p1)
-                            td.appendChild(p2)
-                        }
-                        if(i == 4) {
-                            let p1 = document.createElement('p')
-                            let p2 = document.createElement('p')
-                            p1.setAttribute(vueScopedStyleAttr, '')
-                            p2.setAttribute(vueScopedStyleAttr, '')
-                            p1.classList.add('replayTime')
-                            p2.classList.add('replayName')
-                            p1.textContent = this.getTime(k.lsatReplayTime)
-                            p2.textContent = k.lastReplayUser
-
-                            td.appendChild(p1)
-                            td.appendChild(p2)
-                        }
-
-                        // 3.3 循环把td放入tr
-                        tr.appendChild(td)
-                    }
-
-                    // 4 把tr放入tbody中
-                    tbody.appendChild(tr)
-                })
+        gotoArticle(id) {
+            this.$router.push({
+                path: '/article',
+                query: {
+                    id: id
+                }
             })
         },
 
@@ -594,11 +512,83 @@ export default {
         },
 
         //
-    }
+    },
+
 }
 </script>
 
 <style lang="less" scoped>
+
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .tool {
+        display: none;
+    }
+
+    .bmHead {
+        display: none;
+    }
+
+    .bgh {
+        display: none;
+    }
+
+    .bmBody {
+        position: relative;
+        tr {
+            display: block;
+            position: relative;
+            height: 1.041667rem!important;
+            width: 100%;
+            td {
+                position: absolute;
+                height: 0.3125rem!important;
+                background-color: #ffedc3!important;
+                border: 0!important;
+            }
+            td:first-child {
+                font-size: 0.208333rem!important;
+                width: 20%!important;
+                text-align: left!important;
+                padding-left: 8px;
+            }
+            td:nth-child(2) {
+                position: absolute;
+                box-sizing: border-box;
+                width: 100%;
+                height: 0.729167rem!important;
+                bottom: 0;
+                line-height: 0.729167rem;
+                background-color: #fff0cd!important;
+                font-size: 0.067708rem!important;
+            }
+            td:nth-child(3) {
+                width: 40%!important;
+                right: 40%;
+                p {
+                    display: inline-block;
+                    padding: 2px 0.052083rem!important;
+                }
+            }
+            td:nth-child(4) {
+                width: 40%!important;
+                right: 0;
+                p {
+                    display: inline-block;
+                    padding: 2px 0.052083rem!important;
+                }
+            }
+        }
+        tr:nth-of-type(odd) {
+            td {
+                background-color: #fff6df!important;
+            }
+            td:nth-child(2) {
+                background-color: #fff8e7!important;
+            }
+        }
+    }
+}
 
 .bmTitle {
     height: 50px;

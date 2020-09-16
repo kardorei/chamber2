@@ -6,6 +6,12 @@ import './assets/css/global.css'
 import './assets/css/font.css'
 import './assets/js/flexible.js'
 
+// 全局过滤器
+import * as custom from "./utils/filters.js";
+Object.keys(custom).forEach(key => {
+    Vue.filter(key, custom[key])
+})
+
 Vue.config.productionTip = false
 
 // axios全局配置

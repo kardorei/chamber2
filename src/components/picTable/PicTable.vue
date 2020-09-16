@@ -47,6 +47,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// 响应式宽度小于等于750px的样式修改
+@media screen and (max-width: 750px) {
+    .picTable{
+        margin-top: 0!important;
+        td:nth-of-type(odd) {
+            height: 1.302083rem!important;
+            span {
+                font-size: 0.208333rem!important;
+            }
+        }
+    }
+}
+
 .picTable {
     border-spacing: 0;
     overflow: hidden;
@@ -54,7 +67,6 @@ export default {
     td:nth-of-type(odd) {
         width: 25%;
         height: 130px;
-        
         a {
             position: relative;
             display: block;
